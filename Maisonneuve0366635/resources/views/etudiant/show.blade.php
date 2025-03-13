@@ -25,11 +25,11 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-between">
-                            <a href="{{route('etudiant.edit', $etudiant->id)}}" class="btn btn-sm btn-outline-success">Modifier</a>
+                            <a href="{{route('etudiant.edit', $etudiant->id)}}" class="btn btn-primary">Modifier</a>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Supprimer le profil
-                            </button>
+                            </button> -->
                             <form method="post">
                                 @csrf
                                 @method('delete')
