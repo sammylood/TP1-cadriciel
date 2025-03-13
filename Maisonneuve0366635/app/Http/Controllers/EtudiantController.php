@@ -13,7 +13,7 @@ class EtudiantController extends Controller
     public function index()
     {
         $etudiants = Etudiant::all();
-        //$tasks = Task::orderby('title')->get();
+        //$etudiants = Etudiant::orderby('title')->get();
 
 
         return view('etudiant.index', ['etudiants' => $etudiants]);
@@ -24,7 +24,7 @@ class EtudiantController extends Controller
      */
     public function create()
     {
-        //
+        return view('etudiant.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class EtudiantController extends Controller
      */
     public function edit(Etudiant $etudiant)
     {
-        //
+        return view('etudiant.edit', ['etudiant' => $etudiant]);
     }
 
     /**
@@ -56,7 +56,23 @@ class EtudiantController extends Controller
      */
     public function update(Request $request, Etudiant $etudiant)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:80',
+            'adresse'  => 'required|string|max:180',
+            'telephone'  => 'required|string|max:50',
+            'email'  => 'string|max:80',
+            'date_naissance' => 'nullable|date'
+        ]);
+
+        $etudiant->update([
+            'nom' => $request->nom,
+            'adresse'  => $request->adresse,
+            'telephone'  => $request->telephone,
+            'email'  => $request->email,
+            'date_naissance'  => $request->date_naissance,       
+        ]);
+
+        return redirect()->route('etudiant.show', $etudiant->id)->withSuccess('Etudiant mis à jour!');
     }
 
     /**
@@ -64,6 +80,9 @@ class EtudiantController extends Controller
      */
     public function destroy(Etudiant $etudiant)
     {
-        //
+        $id = $etudiant->id;
+        $etudiant->delete();
+
+        return redirect()->route('etudiant.index')->withSuccess('Etudiant number ' . $id . ' deleted!');
     }
 }

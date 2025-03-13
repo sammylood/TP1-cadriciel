@@ -140,7 +140,7 @@
                             <td>{{ $etudiant->nom}}</td>
                             <td>{{ $etudiant->email}}</td>
                             <td>{{ $etudiant->telephone}}</td>
-                            <td><a class="btn btn-primary">Modifier</a></td>
+                            <td><a class="btn btn-primary" href="{{route('etudiant.edit', $etudiant->id)}}">Modifier</a></td>
                             <td><a class="btn btn-danger">supprimer</a></td>
                         </tr>
                         @empty

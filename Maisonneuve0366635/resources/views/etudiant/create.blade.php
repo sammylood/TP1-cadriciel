@@ -1,50 +1,59 @@
 @extends('layouts.app')
-@section('title', 'Create Task')
+@section('title', 'Creer Etudiant')
 @section('content')
-<h1>Add Task</h1>
+<h1>Add Etudiant</h1>
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Add New Task</h5>
+                <h5 class="card-title">Ajouter nouvel Etudiant</h5>
             </div>
-            {{ $errors }} {{-- la variables $errors contient les erreurs du fichier,  il est vide par défaut --}}
+           
             <div class="card-body">
                 <form method="post">
                     @csrf
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" id="title" name="title" class="form-control" value="{{ old('title')}}">
-                        @if($errors->has('title'))
+                        <label for="nom" class="form-label">Nom</label>
+                        <input type="text" id="nom" name="nom" class="form-control" value="{{ old('nom')}}">
+                        @if($errors->has('nom'))
                         <div class="text-danger mt-2">
-                            {{ $errors->first('title') }}
+                            {{ $errors->first('nom') }}
                         </div>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea id="description" name="description" class="form-control">value="{{ old('description')}}"</textarea>
-                        @if($errors->has('description'))
+                        <label for="adresse" class="form-label">Adresse</label>
+                        <textarea id="adresse" name="adresse" class="form-control"value="{{ old('adresse')}}"></textarea>
+                        @if($errors->has('adresse'))
                         <div class="text-danger mt-2">
-                            {{ $errors->first('description') }}
+                            {{ $errors->first('adresse') }}
                         </div>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="completed" class="form-check-label">Completed</label>
-                        <input type="checkbox" id="completed" name="completed" value="1" class="form-check-input" {{old('completed')? 'checked' : ''}}>
-                        @if($errors->has('completed'))
+                        <label for="telephone" class="form-label">Telephone</label>
+                        <input type="text" id="telephone" name="telephone" class="form-control" value="{{ old('telephone')}}">
+                        @if($errors->has('telephone'))
                         <div class="text-danger mt-2">
-                            {{ $errors->first('completed') }}
+                            {{ $errors->first('telephone') }}
                         </div>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="due_date" class="form-label">Due Date</label>
-                        <input type="date" id="due_date" name="due_date" class="form-control" value="{{ old('due_date')}}">
-                        @if($errors->has('due_date'))
+                        <label for="email" class="form-label">Courriel</label>
+                        <input type="text" id="email" name="email" class="form-control" value="{{ old('email')}}">
+                        @if($errors->has('email'))
                         <div class="text-danger mt-2">
-                            {{ $errors->first('due_date') }}
+                            {{ $errors->first('email') }}
+                        </div>
+                        @endif
+                    </div>
+                    <div class="mb-3">
+                        <label for="date_naissance" class="form-label">Date de naissance</label>
+                        <input type="date" id="date_naissance" name="date_naissance" class="form-control" value="{{ old('date_naissance')}}">
+                        @if($errors->has('date_naissance'))
+                        <div class="text-danger mt-2">
+                            {{ $errors->first('date_naissance') }}
                         </div>
                         @endif
                     </div>
